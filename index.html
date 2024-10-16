@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Drawing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-width: 600px;
+            width: 100%;
+        }
+        .game-board, .score-table {
+            padding: 20px;
+        }
+        .score-table {
+            background-color: #f8f8f8;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .ball-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .ball {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+        }
+        .red { background-color: #ff6b6b; }
+        .blue { background-color: #4d96ff; }
+        .green { background-color: #6bff6b; }
+        select, button, input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        #login-screen, #wait-screen, #game-screen {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div id="login-screen">
+            <h2>Enter Your Name</h2>
+            <input type="text" id="player-name" placeholder="Your Name">
+            <button id="join-game">Join Game</button>
+        </div>
+        <div id="wait-screen" style="display: none;">
+            <h2>Waiting for other player...</h2>
+        </div>
+        <div id="game-screen" style="display: none;">
+            <div class="game-board">
+                <h1>Ball Drawing Game</h1>
+                <div class="ball-container">
+                    <div class="ball red"><span id="red-count">7</span></div>
+                    <div class="ball blue"><span id="blue-count">2</span></div>
+                    <div class="ball green"><span id="green-count">1</span></div>
+                </div>
+                <div id="turn-info"></div>
+                <select id="ball-select">
+                    <option value="">Select a ball</option>
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                </select>
+                <button id="confirm-choice">Confirm Choice</button>
+                <h2 id="result"></h2>
+            </div>
+            <div class="score-table">
+                <h2>Scores</h2>
+                <table>
+                    <tr>
+                        <th>Player</th>
+                        <th>Score</th>
+                    </tr>
+                    <tr>
+                        <td id="player1-name-display"></td>
+                        <td id="player1-score">0</td>
+                    </tr>
+                    <tr>
+                        <td id="player2-name-display"></td>
+                        <td id="player2-score">0</td>
+                    </tr>
+                </table>
+                <div id="round-info"></div>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
